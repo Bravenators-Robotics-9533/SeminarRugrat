@@ -4,13 +4,13 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name="Traditional Drive")
+@TeleOp(name="Traditional Drive", group="Below")
 public class TraditionalDrive extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
 
-        RugratHardware rugrat = new RugratHardware(this.hardwareMap);
+        RugratHardware rugrat = new RugratHardware(this, this.hardwareMap);
 
         waitForStart();
 
