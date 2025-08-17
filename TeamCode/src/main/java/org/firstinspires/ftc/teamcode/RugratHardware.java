@@ -9,7 +9,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.util.Range;
 
-import org.checkerframework.checker.index.qual.LTEqLengthOf;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 
@@ -48,8 +47,8 @@ public class RugratHardware {
         this.imu.initialize(new IMU.Parameters(orientationOnRobot));
         this.imu.resetYaw();
 
-        this.left.setDirection(DcMotorSimple.Direction.FORWARD);
-        this.right.setDirection(DcMotorSimple.Direction.REVERSE);
+        this.left.setDirection(DcMotorSimple.Direction.REVERSE);
+        this.right.setDirection(DcMotorSimple.Direction.FORWARD);
 
         this.left.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         this.right.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

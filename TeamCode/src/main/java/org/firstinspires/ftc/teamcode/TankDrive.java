@@ -12,6 +12,8 @@ public class TankDrive extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
+        DcMotorEx otherMotor = hardwareMap.get(DcMotorEx.class, "o");
+
         RugratHardware rugrat = new RugratHardware(this, this.hardwareMap);
 
         waitForStart();
@@ -21,11 +23,19 @@ public class TankDrive extends LinearOpMode {
             double leftPower    = Math.pow(gamepad1.left_stick_y, 3);
             double rightPower   = Math.pow(gamepad1.right_stick_y, 3);
 
+            double oPower       = gamepad1.right_trigger - gamepad1.left_trigger;
+
             leftPower   = Range.clip(leftPower, -1.0, 1.0);
             rightPower  = Range.clip(rightPower, -1.0, 1.0);
 
+            otherMotor.setPower(Range.clip(oPower, -1.0, 1.0));
+
             rugrat.left.setPower(leftPower);
             rugrat.right.setPower(rightPower);
+
+            telemetry.addData("L", rugrat.left.getCurrentPosition());
+            telemetry.addData("R", rugrat.right.getCurrentPosition());
+            telemetry.update();
 
         }
 
